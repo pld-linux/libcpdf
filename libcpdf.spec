@@ -82,8 +82,6 @@ install sourceP/libcpdf.a $RPM_BUILD_ROOT%{_libdir}
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -rf examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-gzip -9nf sourceP/ChangeLog doc/*.txt fonts/README*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -92,15 +90,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc sourceP/*.gz doc/*.gz LICENSE*
+%doc sourceP/ChangeLog doc/*.txt fonts/README* LICENSE*
 %attr(755,root,root) %{_libdir}/libcpdf.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
+%doc doc/*.pdf
 %attr(755,root,root) %{_libdir}/libcpdf.so
 %{_includedir}/cpdflib.h
 %{_examplesdir}/%{name}-%{version}
-%doc doc/*.pdf
 
 %files static
 %defattr(644,root,root,755)
