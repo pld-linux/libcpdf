@@ -1,0 +1,85 @@
+--- sourceP/Makefile.Linux.orig	Fri Dec 10 01:28:23 1999
++++ sourceP/Makefile.Linux	Fri Dec 10 08:57:51 1999
+@@ -2,9 +2,12 @@
+ # make lib; make install    OR   make shlib; make shinstall
+ 
+ LIB_FILE=libcpdf.a
+-SHLIB_FILE=libcpdf.sl
++SHLIB_FILE=libcpdf.so
+ # LIB_FILE=libcpdf.a
+ # SHLIB_FILE=libcpdf.sl
++SHLIB=${SHLIB_FILE}.${VERSION}
++SHLIBMAJ=${SHLIB_FILE}.2
++
+ 
+ # for making test executable without using the library
+ ROOTTEST=testpdf
+@@ -14,16 +17,16 @@
+ CC=gcc
+ 
+ #CFLAGS= -O
+-CFLAGS=-Wall -g -DLinux
++#CFLAGS=-Wall -g -DLinux
+ #CFLAGS=-Wall -g -DLinux -DUSE_LIBTIFF
+ 
+ #For GCC, if you want to pack structure
+ PACK=-fpack-struct
+ #PACK=
+ 
+-INCLUDE_DIR=/usr/local/include
+-LIB_DIR=/usr/local/lib
+-BINDIR=/local/ClibPDF
++INCLUDE_DIR=/usr/include
++LIB_DIR=/usr/lib
++BINDIR=/usr
+ 
+ 
+ #LD_FLAGS=-s
+@@ -49,7 +52,7 @@
+ # POBJS= pcpdfTIFF.o pcpdfPDFIMG.o pcpdfLinear.o pcpdfRawImg.o
+ 
+ # the following is from zlib library
+-ZOBJS= compress.o deflate.o adler32.o trees.o zutil.o
++#ZOBJS= compress.o deflate.o adler32.o trees.o zutil.o
+ 
+ #$(ROOT): $(ROOT).o $(LIB_DIR)/$(LIB_FILE)
+ #	$(CC) $(LD_FLAGS) $(ARCHS) -o $(ROOT) $(ROOT).o $(OBJS) -L$(LIB_DIR) $(LIBS)
+@@ -64,23 +67,32 @@
+ 
+ 
+ $(ROOTTEST):  $(ROOTTEST).o $(OBJS) $(POBJS) $(ZOBJS)
+-	$(CC) $(LD_FLAGS) $(ARCHS) -o $(ROOTTEST) $(ROOTTEST).o $(OBJS) $(POBJS) $(ZOBJS) $(LIBS) -lm
++	$(CC) $(LD_FLAGS) $(ARCHS) -o $(ROOTTEST) $(ROOTTEST).o $(OBJS) $(POBJS) $(ZOBJS) $(LIBS) -lm -lz
+ 	cp ./arctest.pdf.sav ./arctest.pdf
+ 
+ 
+ $(LIB_FILE):  $(OBJS) $(POBJS) $(ZOBJS) Makefile
+-	rm -f $(LIB_FILE)
+-	ar r $@ $(OBJS) $(POBJS) $(ZOBJS)
++	rm -f $(SHLIB)
++	gcc -shared -Wl,-soname,$(SHLIBMAJ) -o $(SHLIB) $(OBJS) $(ZOBJS) -lz -lc
++	ln -sf $(SHLIB) $(SHLIBGEN)
++	ar rc $@ $(OBJS)
+ 	ranlib $@
+ 
+-$(SHLIB_FILE):  $(OBJS) $(POBJS) $(ZOBJS) Makefile
+-	rm -f $(SHLIB_FILE)
+-	ld -shared -o $(SHLIB_FILE) $(OBJS) $(POBJS) $(ZOBJS)
++$(SHLIB_FILE):  $(OBJS) $(POBJS) Makefile
++	rm -f $(SHLIBMAJ)
++	rm -f $(SHLIBGEN)
++	gcc -shared -Wl,-soname,$(SHLIBMAJ) -o $(SHLIB) $(OBJS) $(ZOBJS) -lz -lc
++	ln -s $(SHLIB) $(SHLIBMAJ)
++	ln -s $(SHLIB) $(SHLIB_FILE)
++	ar rc $(LIB_FILE) $(OBJS)
++	ranlib $(LIB_FILE)
+ 
+ 
+ install: lib
+ #	mkdir -p $(LIB_DIR)
+ #	mkdir -p $(INCLUDE_DIR)
++	cp $(SHLIB) $(LIB_DIR)
++	ln -sf $(LIB_DIR)/$(SHLIB) $(LIB_DIR)/$(SHLIBGEN)
+ 	cp $(LIB_FILE) $(LIB_DIR)
+ 	ranlib $(LIB_DIR)/$(LIB_FILE)
+ 	cp cpdflib.h $(INCLUDE_DIR)

@@ -1,0 +1,28 @@
+--- sourceP/config.h.orig	Fri Dec 10 02:17:33 1999
++++ sourceP/config.h	Fri Dec 10 09:02:41 1999
+@@ -178,18 +178,21 @@
+ 
+ /* Linux 2.0.34 (Red Hat 5.1)/gcc 2.7.2.3 */
+ /* Acrobat Reader 3.0x for Linux works beautifully. */
++/* But it is not preinstalled on Redhat systems ;-) */
++/* and xpdf is freeware    (HGO)               */
++
+ #ifdef Linux
+ #define PLATFORM_NAME			"Linux"
+-#define PDF_VIEWER_COMMAND		"/usr/local/Acrobat4/bin/acroread"
++#define PDF_VIEWER_COMMAND		"xpdf"
+ #define TEMP_DIRECTORY			"/tmp/"
+-#define ZLIB_COMPRESS_PATH		"/usr/local/bin/zlibcomp"
++#define ZLIB_COMPRESS_PATH		"" /* not needed zlib is dispo (HGO) */
+ #define BINARY_WRITE			"w"
+ #define BINARY_READ			"r"
+ #define DIR_SEPARATOR			'/'
+ #define UNIX				1
+ #define DEF_FONTMAPFILE			"fontmap.lst"
+-#define DEF_PFM_DIR			"/usr/local/font/pfm"
+-#define DEF_PFB_DIR			"/usr/local/font/pfb"
++#define DEF_PFM_DIR			"/usr/share/fonts/Type1/pfm"
++#define DEF_PFB_DIR			"/usr/share/fonts/Type1"
+ #endif
+ 
+ /* MacOS X (Server) is Unix */
