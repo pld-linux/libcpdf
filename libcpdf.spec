@@ -27,17 +27,30 @@ This is a library of ANSI C functions, for creating PDF files directly
 via C.
 
 %package devel
-Summary:	header files and libraries needed for gd development
+Summary:	Header files needed for gd development
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
-Requires:	libcpdf = %{version}
+Requires:	%{name} = %{version}
 Requires:	zlib-devel
 
 %description devel
-This package includes the header files and libraries needed for
-developing programs using clibpdf.
+This package includes the header files for developing programs using
+clibpdf.
+
+%package static
+Summary:	Static libraries needed for gd development
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
+Requires:	zlib-devel
+
+%description static
+This package includes static libraries needed for developing
+programs using clibpdf.
 
 %prep
 %setup -q -n ClibPDF
@@ -97,5 +110,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc examples/ 
 %defattr(-,root,root)
-%{_libdir}/%{name}.a
 %{_includedir}/cpdflib.h
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/%{name}.a
