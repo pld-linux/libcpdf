@@ -31,7 +31,7 @@ z C.
 Summary:	Header files needed for libcpdf development
 Summary(pl):	Pliki nag³ówkowe do programowania z u¿yciem libcpdf
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	zlib-devel
 
 %description devel
@@ -46,7 +46,7 @@ u¿yciem libcpdf.
 Summary:	Static libraries for libcpdf development
 Summary(pl):	Statyczne biblioteki libcpdf
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 Requires:	zlib-devel
 
 %description static
