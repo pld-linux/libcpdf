@@ -21,8 +21,9 @@ Patch1:		%{name}-config.patch
 URL:		http://www.fastio.com/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
-Requires:	xpdf
-Requires:	ghostscript-fonts
+#Requires:	xpdf
+#Requires:	ghostscript-fonts-std
+#Requires:	ghostscript-fonts-other
 
 %description
 This is a library of ANSI C functions, for creating PDF files directly
@@ -92,21 +93,15 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
 install sourceP/cpdflib.h $RPM_BUILD_ROOT%{_includedir}
-#install -m 755 %{name}.so.%{version} $RPM_BUILD_ROOT%{_libdir}
 install sourceP/libcpdf.so* $RPM_BUILD_ROOT%{_libdir}
 install sourceP/libcpdf.a $RPM_BUILD_ROOT%{_libdir}
-#ln -sf %{name}.so.%{version} $RPM_BUILD_ROOT%{_libdir}/%{name}.so.%{minorversion}
-#ln -sf %{name}.so.%{version} $RPM_BUILD_ROOT%{_libdir}/%{name}.so
 
-install -d $RPM_BUILD_ROOT%{_fontsdir}/Type1/pfm
-install fonts/*.pfb $RPM_BUILD_ROOT%{_fontsdir}/Type1
-install fonts/*.pfm $RPM_BUILD_ROOT%{_fontsdir}/Type1/pfm
 #cp fontmap.lst $RPM_BUILD_ROOT%{_datadir}/ghostscript/fonts
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -rf examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-gzip -9nf sourceP/*README* sourceP/ChangeLog doc/*.txt
+gzip -9nf sourceP/ChangeLog doc/*.txt fonts/README*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -117,9 +112,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc sourceP/*.gz doc/*.gz LICENSE*
-%{_fontsdir}/Type1/*.pfb
-%{_fontsdir}/Type1/pfm/*.pfm
-#%{_datadir}/ghostscript/fonts/fontmap.lst
 %attr(755,root,root) %{_libdir}/libcpdf.so.*.*
 
 %files devel
