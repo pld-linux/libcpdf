@@ -8,7 +8,7 @@ Release:	4
 License:	Free for non-commercial use
 Group:		Libraries
 Source0:	http://www.fastio.com/clibpdf%{fileversion}.tar.gz
-# Source0-md5: 840d78e187ab46fc5700caba9fbb33e5
+# Source0-md5:	840d78e187ab46fc5700caba9fbb33e5
 Source1:	%{name}-examples.Makefile
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-config.patch
