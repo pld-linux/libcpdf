@@ -4,7 +4,7 @@ Name:		libcpdf
 Version:	2.02r1
 %define		fileversion 202r1
 %define		minorversion 2
-Release:	1
+Release:	2
 License:	Free for non-commercial use
 Group:		Libraries
 Source0:	http://www.fastio.com/clibpdf%{fileversion}.tar.gz
@@ -72,7 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
 install sourceP/cpdflib.h $RPM_BUILD_ROOT%{_includedir}
-install sourceP/libcpdf.so* $RPM_BUILD_ROOT%{_libdir}
+install sourceP/libcpdf.so.*.* $RPM_BUILD_ROOT%{_libdir}
+(cd $RPM_BUILD_ROOT%{_libdir} ; ln -sf libcpdf.so.*.* libcpdf.so)
+
 install sourceP/libcpdf.a $RPM_BUILD_ROOT%{_libdir}
 
 #cp fontmap.lst $RPM_BUILD_ROOT%{_datadir}/ghostscript/fonts
