@@ -7,13 +7,6 @@ Version:	2.02r1
 Release:	1
 License:	Free for non-commercial use
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	http://www.fastio.com/clibpdf%{fileversion}.tar.gz
 Source1:	%{name}-examples.Makefile
 Patch0:		%{name}-makefile.patch
@@ -37,13 +30,6 @@ z C.
 Summary:	Header files needed for libcpdf development
 Summary(pl):	Pliki nagЁСwkowe do programowania z u©yciem libcpdf
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	zlib-devel
 
@@ -59,13 +45,6 @@ u©yciem libcpdf.
 Summary:	Static libraries for libcpdf development
 Summary(pl):	Statyczne biblioteki libcpdf
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 Requires:	zlib-devel
 
