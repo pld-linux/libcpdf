@@ -1,12 +1,8 @@
---- sourceP/config.h.orig	Fri Dec 10 02:17:33 1999
-+++ sourceP/config.h	Fri Dec 10 09:02:41 1999
-@@ -178,18 +178,21 @@
- 
- /* Linux 2.0.34 (Red Hat 5.1)/gcc 2.7.2.3 */
+diff -uNr ClibPDF.orig/source/config.h ClibPDF/source/config.h
+--- ClibPDF.orig/source/config.h	Fri Jan 28 04:26:01 2000
++++ ClibPDF/source/config.h	Sun Jul 21 00:47:13 2002
+@@ -196,16 +196,16 @@
  /* Acrobat Reader 3.0x for Linux works beautifully. */
-+/* But it is not preinstalled on Redhat systems ;-) */
-+/* and xpdf is freeware    (HGO)               */
-+
  #ifdef Linux
  #define PLATFORM_NAME			"Linux"
 -#define PDF_VIEWER_COMMAND		"/usr/local/Acrobat4/bin/acroread"
@@ -19,8 +15,8 @@
  #define DIR_SEPARATOR			'/'
  #define UNIX				1
  #define DEF_FONTMAPFILE			"fontmap.lst"
--#define DEF_PFM_DIR			"/usr/local/font/pfm"
--#define DEF_PFB_DIR			"/usr/local/font/pfb"
+-#define DEF_PFM_DIR			"/usr/share/fonts/default/Type1"
+-#define DEF_PFB_DIR			"/usr/share/fonts/default/Type1"
 +#define DEF_PFM_DIR			"/usr/share/fonts/Type1/pfm"
 +#define DEF_PFB_DIR			"/usr/share/fonts/Type1"
  #endif

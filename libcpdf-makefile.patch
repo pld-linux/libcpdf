@@ -1,5 +1,5 @@
---- sourceP/Makefile.Linux.orig	Fri Dec 10 01:28:23 1999
-+++ sourceP/Makefile.Linux	Fri Dec 10 08:57:51 1999
+--- source/Makefile.Linux.orig	Fri Dec 10 01:28:23 1999
++++ source/Makefile.Linux	Fri Dec 10 08:57:51 1999
 @@ -2,9 +2,12 @@
  # make lib; make install    OR   make shlib; make shinstall
  
