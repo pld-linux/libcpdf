@@ -4,7 +4,7 @@ Name:		libcpdf
 Version:	2.02r1
 %define		fileversion 202r1
 %define		minorversion 2
-Release:	2
+Release:	3
 License:	Free for non-commercial use
 Group:		Libraries
 Source0:	http://www.fastio.com/clibpdf%{fileversion}.tar.gz
@@ -57,12 +57,12 @@ Ten pakiet zawiera statyczne biblioteki libcpdf.
 %prep
 %setup -q -n ClibPDF
 %patch0 -p0
-%patch1 -p0
+%patch1 -p1
 
 cp -f %{SOURCE1} examples/Makefile
 
 %build
-cd sourceP
+cd source
 %{__make} -f Makefile.Linux shlib \
 	CFLAGS="%{rpmcflags} -DLinux -fPIC" \
 	VERSION="%{version}"
@@ -71,11 +71,11 @@ cd sourceP
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
-install sourceP/cpdflib.h $RPM_BUILD_ROOT%{_includedir}
-install sourceP/libcpdf.so.*.* $RPM_BUILD_ROOT%{_libdir}
+install source/cpdflib.h $RPM_BUILD_ROOT%{_includedir}
+install source/libcpdf.so.*.* $RPM_BUILD_ROOT%{_libdir}
 (cd $RPM_BUILD_ROOT%{_libdir} ; ln -sf libcpdf.so.*.* libcpdf.so)
 
-install sourceP/libcpdf.a $RPM_BUILD_ROOT%{_libdir}
+install source/libcpdf.a $RPM_BUILD_ROOT%{_libdir}
 
 #cp fontmap.lst $RPM_BUILD_ROOT%{_datadir}/ghostscript/fonts
 
@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc sourceP/ChangeLog doc/*.txt fonts/README* LICENSE*
+%doc source/ChangeLog doc/*.txt fonts/README* LICENSE*
 %attr(755,root,root) %{_libdir}/libcpdf.so.*.*
 
 %files devel
