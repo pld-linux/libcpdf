@@ -57,7 +57,7 @@
 -	rm -f $(LIB_FILE)
 -	ar r $@ $(OBJS) $(POBJS) $(ZOBJS)
 +	rm -f $(SHLIB)
-+	gcc -shared -Wl,-soname,$(SHLIBMAJ) -o $(SHLIB) $(OBJS) $(ZOBJS) -lz -lc
++	gcc -shared -Wl,-soname,$(SHLIBMAJ) -o $(SHLIB) $(OBJS) $(ZOBJS) -lm -lz -lc
 +	ln -sf $(SHLIB) $(SHLIBGEN)
 +	ar rc $@ $(OBJS)
  	ranlib $@
@@ -68,7 +68,7 @@
 +$(SHLIB_FILE):  $(OBJS) $(POBJS) Makefile
 +	rm -f $(SHLIBMAJ)
 +	rm -f $(SHLIBGEN)
-+	gcc -shared -Wl,-soname,$(SHLIBMAJ) -o $(SHLIB) $(OBJS) $(ZOBJS) -lz -lc
++	gcc -shared -Wl,-soname,$(SHLIBMAJ) -o $(SHLIB) $(OBJS) $(ZOBJS) -lm -lz -lc
 +	ln -s $(SHLIB) $(SHLIBMAJ)
 +	ln -s $(SHLIB) $(SHLIB_FILE)
 +	ar rc $(LIB_FILE) $(OBJS)
