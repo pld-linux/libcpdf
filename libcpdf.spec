@@ -4,7 +4,7 @@ Name:		libcpdf
 Version:	2.02r1
 %define		fileversion 202r1
 %define		minorversion 2
-Release:	4
+Release:	5
 License:	Free for non-commercial use
 Group:		Libraries
 Source0:	http://www.fastio.com/clibpdf%{fileversion}.tar.gz
