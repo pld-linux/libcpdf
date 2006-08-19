@@ -13,11 +13,10 @@ Source1:	%{name}-examples.Makefile
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-config.patch
 URL:		http://www.fastio.com/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
-#Requires:	xpdf
 #Requires:	ghostscript-fonts-std
 #Requires:	ghostscript-fonts-other
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a library of ANSI C functions, for creating PDF files directly
@@ -63,8 +62,7 @@ Ten pakiet zawiera statyczne biblioteki libcpdf.
 cp -f %{SOURCE1} examples/Makefile
 
 %build
-cd source
-%{__make} -f Makefile.Linux shlib \
+%{__make} -C source -f Makefile.Linux shlib \
 	CFLAGS="%{rpmcflags} -DLinux -fPIC" \
 	VERSION="%{version}"
 
