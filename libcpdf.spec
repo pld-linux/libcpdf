@@ -1,5 +1,5 @@
 Summary:	PDF manipulating library
-Summary(pl):	Biblioteka do obr骲ki plik體 PDF
+Summary(pl.UTF-8):   Biblioteka do obr贸bki plik贸w PDF
 Name:		libcpdf
 Version:	2.02r1
 %define		fileversion 202r1
@@ -22,13 +22,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This is a library of ANSI C functions, for creating PDF files directly
 via C.
 
-%description -l pl
-To jest biblioteka funkcji ANSI C do tworzenia plik體 PDF bezpo秗ednio
+%description -l pl.UTF-8
+To jest biblioteka funkcji ANSI C do tworzenia plik贸w PDF bezpo艣rednio
 z C.
 
 %package devel
 Summary:	Header files needed for libcpdf development
-Summary(pl):	Pliki nag丑wkowe do programowania z u縴ciem libcpdf
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe do programowania z u偶yciem libcpdf
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	zlib-devel
@@ -37,13 +37,13 @@ Requires:	zlib-devel
 This package includes the header files for developing programs using
 libcpdf.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag丑wkowe potrzebne do programowania z
-u縴ciem libcpdf.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nag艂贸wkowe potrzebne do programowania z
+u偶yciem libcpdf.
 
 %package static
 Summary:	Static libraries for libcpdf development
-Summary(pl):	Statyczne biblioteki libcpdf
+Summary(pl.UTF-8):   Statyczne biblioteki libcpdf
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	zlib-devel
@@ -51,7 +51,7 @@ Requires:	zlib-devel
 %description static
 This package includes static libcpdf libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Ten pakiet zawiera statyczne biblioteki libcpdf.
 
 %prep
