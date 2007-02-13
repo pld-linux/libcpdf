@@ -1,5 +1,5 @@
 Summary:	PDF manipulating library
-Summary(pl.UTF-8):   Biblioteka do obróbki plików PDF
+Summary(pl.UTF-8):	Biblioteka do obróbki plików PDF
 Name:		libcpdf
 Version:	2.02r1
 %define		fileversion 202r1
@@ -28,7 +28,7 @@ z C.
 
 %package devel
 Summary:	Header files needed for libcpdf development
-Summary(pl.UTF-8):   Pliki nagłówkowe do programowania z użyciem libcpdf
+Summary(pl.UTF-8):	Pliki nagłówkowe do programowania z użyciem libcpdf
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	zlib-devel
@@ -43,7 +43,7 @@ użyciem libcpdf.
 
 %package static
 Summary:	Static libraries for libcpdf development
-Summary(pl.UTF-8):   Statyczne biblioteki libcpdf
+Summary(pl.UTF-8):	Statyczne biblioteki libcpdf
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	zlib-devel
