@@ -64,6 +64,7 @@ cp -f %{SOURCE1} examples/Makefile
 %build
 %{__make} -C source -f Makefile.Linux shlib \
 	CFLAGS="%{rpmcflags} -DLinux -fPIC" \
+	LDFLAGS="%{rpmldflags}" \
 	VERSION="%{version}"
 
 %install
