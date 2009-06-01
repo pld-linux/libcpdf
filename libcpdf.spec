@@ -2,20 +2,18 @@ Summary:	PDF manipulating library
 Summary(pl.UTF-8):	Biblioteka do obróbki plików PDF
 Name:		libcpdf
 Version:	2.02r1
-%define		fileversion 202r1
-%define		minorversion 2
 Release:	6
 License:	Free for non-commercial use
 Group:		Libraries
-Source0:	http://www.fastio.com/clibpdf%{fileversion}.tar.gz
+Source0:	http://www.fastio.com/clibpdf202r1.tar.gz
 # Source0-md5:	840d78e187ab46fc5700caba9fbb33e5
 Source1:	%{name}-examples.Makefile
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-config.patch
 URL:		http://www.fastio.com/
 BuildRequires:	zlib-devel
-#Requires:	ghostscript-fonts-std
 #Requires:	ghostscript-fonts-other
+#Requires:	ghostscript-fonts-std
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,6 +61,7 @@ cp -f %{SOURCE1} examples/Makefile
 
 %build
 %{__make} -C source -f Makefile.Linux shlib \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -DLinux -fPIC" \
 	LDFLAGS="%{rpmldflags}" \
 	VERSION="%{version}"
@@ -73,8 +72,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir},%{_includedir},%{_bindir},%{_mandir}/man1}
 
 install source/cpdflib.h $RPM_BUILD_ROOT%{_includedir}
 install source/libcpdf.so.*.* $RPM_BUILD_ROOT%{_libdir}
-(cd $RPM_BUILD_ROOT%{_libdir} ; ln -sf libcpdf.so.*.* libcpdf.so)
-
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libcpdf.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcpdf.so
 install source/libcpdf.a $RPM_BUILD_ROOT%{_libdir}
 
 #cp fontmap.lst $RPM_BUILD_ROOT%{_datadir}/ghostscript/fonts
