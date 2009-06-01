@@ -2,7 +2,7 @@ Summary:	PDF manipulating library
 Summary(pl.UTF-8):	Biblioteka do obróbki plików PDF
 Name:		libcpdf
 Version:	2.02r1
-Release:	6
+Release:	7
 License:	Free for non-commercial use
 Group:		Libraries
 Source0:	http://www.fastio.com/clibpdf202r1.tar.gz
