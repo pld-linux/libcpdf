@@ -54,8 +54,8 @@ Ten pakiet zawiera statyczne biblioteki libcpdf.
 
 %prep
 %setup -q -n ClibPDF
-%patch0 -p0
-%patch1 -p1
+%patch -P0 -p0
+%patch -P1 -p1
 
 cp -f %{SOURCE1} examples/Makefile
 
